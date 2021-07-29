@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="index.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -31,20 +32,58 @@
         <div class="form-group">
           <button class="btn btn-danger btn-block">Search User</button>
         </div>
+        <br>
       </form>
     </div>
-    <div class="container flip-card" id='result'>
-        <!--<div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="2.jpg" class="img-thumbnail" alt="avatar">
-          </div>
-          <div class="flip-card-back">
-            <h1>John Doe</h1> 
-            <button class="btn btn-primary">Git Profile</button>
-          </div>
-        </div> -->
-        </div>
+    <div class="container">
+      <p>Note: Hover on the image to get into the profile & Repo's</p>
     </div>
+    <div class="container flip-card" id='result'></div>
+    </div>
+    
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Projects</h4>
+  </div>
+  <div class="modal-body">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Git Repo</th>
+        </tr>
+      </thead>
+      <tbody id = "modelbody">
+        <!-- <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+</div>
+</div>
   </body>
   <script src="script_aj.js"></script>
+  <script>
+    $(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#modelbody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+  </script>
 </html>
