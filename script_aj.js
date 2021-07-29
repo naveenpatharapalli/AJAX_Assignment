@@ -42,18 +42,18 @@ form.addEventListener("submit", function (e) {
 function ModalEvent() {
   var xhr = new XMLHttpRequest();
   var user = sessionStorage.getItem("username");
+  var inHtm = "";
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let res = JSON.parse(this.response); //missed initially
       console.log(res);
       for (const item of res) {
-        document.getElementById("modelbody").innerHTML =
-          document.getElementById("modelbody").innerHTML +
-          `<tr>
+        inHtm += `<tr>
           <td>${item.name}</td>
           <td><a class="btn btn-primary" target="_blank" href="${item.clone_url}" role="button">Git Repo</a></td>
         </tr>`;
       }
+      document.getElementById("modelbody").innerHTML = inHtm;
     }
     if (this.status != 200 && this.readyState == 4) {
       alert("Something Went Wrong" + this.status);
