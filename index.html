@@ -10,10 +10,15 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="index.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Document</title>
+
+    <script src = "https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <title>Git User Search</title>
   </head>
   <body>
     <div class="container">
@@ -38,7 +43,7 @@
     <div class="container">
       <p>Note: Hover on the image to get into the profile & Repo's</p>
     </div>
-    <div class="container flip-card" id='result'></div>
+    <div class="container card border-primary mb-3" id='result'></div>
     </div>
     
 
@@ -51,8 +56,8 @@
     <h4 class="modal-title">Projects</h4>
   </div>
   <div class="modal-body">
-    <input class="form-control" id="myInput" type="text" placeholder="Search..">
-    <table class="table table-striped">
+    <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+    <table class="table table-striped mydatatable">
       <thead>
         <tr>
           <th>Project Name</th>
@@ -60,11 +65,6 @@
         </tr>
       </thead>
       <tbody id = "modelbody">
-        <!-- <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr> -->
       </tbody>
     </table>
   </div>
@@ -76,7 +76,7 @@
 </div>
   </body>
   <script src="script_aj.js"></script>
-  <script>
+  <!-- <script>
     $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -85,5 +85,8 @@
     });
   });
 });
-  </script>
+</script> -->
+<!-- <script>$(".mydatatable").DataTable();</script> -->
+
+  
 </html>

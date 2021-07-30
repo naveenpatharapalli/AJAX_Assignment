@@ -23,8 +23,20 @@ form.addEventListener("submit", function (e) {
       </div>
       <div class="flip-card-back">
         <h1>${name}</h1> 
-        <a class="btn btn-primary" target="_blank" href="${res.html_url}" role="button">Git Profile</a>
-        <button type="button" target="_blank" onClick = "ModalEvent()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Git Repo's</button>
+        <div><a class="btn btn-primary btn-lg" target="_blank" href="${res.html_url}" role="button">Git Profile</a>
+          <button type="button" target="_blank" onClick = "ModalEvent()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Git Repo's</button>
+        </div  class = "panel panel-default">
+        <div class="panel-body">
+        <span class="label label-success">Company: ${res.company}</span>
+        <span class="label label-warning">Followers: ${res.followers}</span>
+        <span class="label label-info">Following: ${res.following}</span>
+        <span class="label label-primary">Location: ${res.location}</span>
+        <div class="panel-body">
+        <span class="label label-success">Public Repos: ${res.public_repos}</span>
+        <span class="label label-primary">Public Gists: ${res.public_gists}</span>
+        </div>
+        <span class="label label-warning">Member Since: ${res.created_at}</span>
+        </div>
       </div>
     </div> `;
     }
@@ -43,6 +55,8 @@ function ModalEvent() {
   var xhr = new XMLHttpRequest();
   var user = sessionStorage.getItem("username");
   var inHtm = "";
+
+  $(".mydatatable").DataTable().destroy();
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let res = JSON.parse(this.response); //missed initially
@@ -54,6 +68,12 @@ function ModalEvent() {
         </tr>`;
       }
       document.getElementById("modelbody").innerHTML = inHtm;
+      $(".mydatatable").DataTable({
+        lengthMenu: [
+          [5, 10, 15, 25, 50, -1],
+          [5, 10, 15, 25, 50, "All"],
+        ],
+      });
     }
     if (this.status != 200 && this.readyState == 4) {
       alert("Something Went Wrong" + this.status);
